@@ -1,31 +1,15 @@
 <template>
   <div>
-    <home />
-    <about />
-    <download />
-    <pricing />
-    <contact />
+    <hosts />
   </div>
 </template>
-
 <script>
-//import navigation from "../components/PageNavigation";
-//import footer from "../components/PageFooter";
-import home from "../components/HomeSection";
-import about from "../components/AboutSection";
-import download from "../components/DownloadSection";
-import pricing from "../components/PricingSection";
-import contact from "../components/ContactSection";
-
+import hosts from "../components/HostsSection";
 export default {
-  name: "App",
+  name: "HostsView",
 
   components: {
-    home,
-    about,
-    download,
-    pricing,
-    contact,
+    hosts,
   },
 
   /*data: () => ({
@@ -66,3 +50,4 @@ export default {
   },*/
 };
 </script>
+<style scoped></style>

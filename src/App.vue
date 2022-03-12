@@ -1,32 +1,81 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
-  </div>
+  <v-app>
+    <navigation :color="color" :flat="flat" />
+
+    <v-main class="pt-0">
+      <router-view />
+    </v-main>
+    <v-scale-transition>
+      <v-btn
+        fab
+        v-show="fab"
+        v-scroll="onScroll"
+        dark
+        fixed
+        bottom
+        right
+        color="secondary"
+        @click="toTop"
+      >
+        <v-icon>mdi-arrow-up</v-icon>
+      </v-btn>
+    </v-scale-transition>
+    <pageFooter />
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+<style scoped>
+.v-main {
+  background-image: url("~@/assets/img/bgMain.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 </style>
+
+<script>
+import navigation from "./components/PageNavigation";
+import pageFooter from "./components/PageFooter";
+export default {
+  name: "App",
+  components: {
+    navigation,
+    pageFooter,
+  },
+  data: () => ({
+    fab: null,
+    color: "",
+    flat: null,
+  }),
+  created() {
+    const top = window.pageYOffset || 0;
+    if (top <= 60) {
+      this.color = "transparent";
+      this.flat = true;
+    }
+  },
+
+  watch: {
+    fab(value) {
+      if (value) {
+        this.color = "secondary";
+        this.flat = false;
+      } else {
+        this.color = "transparent";
+        this.flat = true;
+      }
+    },
+  },
+
+  methods: {
+    onScroll(e) {
+      if (typeof window === "undefined") return;
+      const top = window.pageYOffset || e.target.scrollTop || 0;
+      this.fab = top > 60;
+    },
+    toTop() {
+      this.$vuetify.goTo(0);
+    },
+  },
+};
+</script>
