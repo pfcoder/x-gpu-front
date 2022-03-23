@@ -5,8 +5,11 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 
 // MOCK
+//if (process.env.NODE_ENV === "development") {
+console.log("development mode");
 const { mockXHR } = require("../mock");
 mockXHR();
+//}
 
 Vue.config.productionTip = false;
 
