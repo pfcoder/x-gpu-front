@@ -74,6 +74,9 @@ export default {
     } else {
       console.log("not login");
     }
+
+    const poem = this.$cookies.get("poem-session");
+    console.log("poem:", poem);
   },
 };
 </script>
