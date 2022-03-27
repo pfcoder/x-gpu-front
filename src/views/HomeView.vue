@@ -16,7 +16,7 @@ import about from "../components/AboutSection";
 import download from "../components/DownloadSection";
 import pricing from "../components/PricingSection";
 import contact from "../components/ContactSection";
-import getToken from "../utils/auth";
+import { getToken } from "@/utils/auth";
 
 export default {
   name: "App",
