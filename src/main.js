@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
-import VueCookies from 'vue-cookies';
+import VueCookies from "vue-cookies";
 
 // MOCK
 //if (process.env.NODE_ENV === "development") {
