@@ -16,7 +16,6 @@ import about from "../components/AboutSection";
 import download from "../components/DownloadSection";
 import pricing from "../components/PricingSection";
 import contact from "../components/ContactSection";
-import { getToken } from "@/utils/auth";
 
 export default {
   name: "App",
@@ -67,18 +66,9 @@ export default {
   },*/
 
   mounted: function () {
-    // read cookie to check if login
-    let poemSession = getToken();
-    if (poemSession) {
-      console.log("poem-session:", JSON.parse(poemSession));
-    } else {
-      console.log("not login");
-    }
-
-    const poem = this.$cookies.get("poem-session");
-    console.log("poem:", poem);
-
-    console.log("from url token:", this.$route.query.token);
+    let urlParams = new URLSearchParams(window.location.search);
+    let token = urlParams.get("token");
+    console.log("token", token);
   },
 };
 </script>
