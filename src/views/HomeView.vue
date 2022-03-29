@@ -77,6 +77,8 @@ export default {
 
     const poem = this.$cookies.get("poem-session");
     console.log("poem:", poem);
+
+    console.log("from url token:", this.$route.query.token);
   },
 };
 </script>
